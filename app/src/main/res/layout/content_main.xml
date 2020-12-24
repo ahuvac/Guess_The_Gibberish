@@ -38,5 +38,4 @@
         android:layout_gravity="center"
         />
 
-    <include layout="@layout/main_include_background" />
 </LinearLayout>

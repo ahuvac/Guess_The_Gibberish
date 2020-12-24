@@ -32,10 +32,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setupToolbar();
         setupFAB();
     }
+
+    private void setupToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
+
     public void openNewActivity(){
         Intent intent = new Intent(this, QuestionActivity.class);
         startActivity(intent);

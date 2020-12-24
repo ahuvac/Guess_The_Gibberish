@@ -7,4 +7,4 @@
     android:scaleType="centerCrop"
     android:alpha=".1"
     android:contentDescription="Background image"
-    tools:showIn="@layout/content_main" />
+     />
