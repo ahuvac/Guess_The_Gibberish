@@ -16,19 +16,27 @@
 
         <TextView
             android:id="@+id/title"
+            android:padding="5dp"
             style="@style/default_style"
             android:layout_gravity="center"
             android:layout_margin="@dimen/slim_margin"
             android:background="@color/white"
             android:fontFamily="sans-serif-condensed-medium"
             android:gravity="center"
-            android:text="@string/app_name" />
+            android:text="@string/app_name"
+            android:textSize="40dp"
+            />
     </androidx.cardview.widget.CardView>
+
 
     <Button
         android:id="@+id/play_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Play" />
+        android:gravity="center"
+        android:text="@string/button_text"
+        android:layout_gravity="center"
+        />
 
+    <include layout="@layout/main_include_background" />
 </LinearLayout>
