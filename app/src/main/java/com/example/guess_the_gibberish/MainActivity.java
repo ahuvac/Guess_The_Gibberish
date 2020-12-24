@@ -1,5 +1,6 @@
 package com.example.guess_the_gibberish;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -12,20 +13,34 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import static lib.Utils.showInfoDialog;
 
 public class MainActivity extends AppCompatActivity {
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        button = (Button) findViewById(R.id.play_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNewActivity();
+            }
+        });
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         setupFAB();
     }
+    public void openNewActivity(){
+        Intent intent = new Intent(this, QuestionActivity.class);
+        startActivity(intent);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
