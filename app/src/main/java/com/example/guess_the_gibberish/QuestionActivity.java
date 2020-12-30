@@ -23,6 +23,7 @@ public class QuestionActivity extends AppCompatActivity {
     private Button next_button, check_button;
     List<String> phrasesList;
     int randomIndex;
+    int score;
 
 
     @Override
@@ -48,11 +49,15 @@ public class QuestionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 checkGuess(randomIndex);
                 Snackbar mySnackbar;
+                String result = "";
                 if(checkGuess(randomIndex)){
-                    mySnackbar = Snackbar.make(v, "Correct!", Snackbar.LENGTH_LONG);
+                    ++score;
+                    result = "Correct!";
+
                 } else {
-                    mySnackbar = Snackbar.make(v, "Incorrect!", Snackbar.LENGTH_LONG);
+                    result = "Incorrect!";
                 }
+                mySnackbar = Snackbar.make(v, result + " \t\tscore: " + score, Snackbar.LENGTH_LONG);
                 mySnackbar.show();
             }
         });
