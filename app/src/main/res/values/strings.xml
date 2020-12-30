@@ -6,24 +6,26 @@
     <string name="button_text">Play</string>
     
     <string-array name="gib_phrases">
-        <item>Mis whimms hut</item>
+        <item>dew wino hue</item>
         <item>elf oh bits up</item>
         <item>fee sha end chaps</item>
         <item>fish hits span hears</item>
-        <item>aight bae queue app high</item>
-        <item>haystack up hank aches</item>
+        <item>eye pillow fizz sigh</item>
+        <item>sea cant higher dove fit</item>
         <item>ditch chews haze hum dan</item>
         <item>gift eat hey shawd</item>
+        <item>pea sank white</item>
     </string-array>
 
     <string-array name="correct_phrases">
-        <item>my swim suit</item>
+        <item>Do I know you</item>
         <item>alphabet soup</item>
         <item>fish and chips</item>
         <item>fidget spinners</item>
-        <item>I bake you a pie</item>
-        <item>a stack of pancakes</item>
+        <item>apple of his eye</item>
+        <item>sick and tired of it</item>
         <item>did you say something</item>
         <item>give it a shot</item>
+        <item>peace and quiet</item>
     </string-array>
 </resources>

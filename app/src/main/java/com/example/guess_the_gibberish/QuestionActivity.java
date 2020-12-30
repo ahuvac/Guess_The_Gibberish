@@ -20,8 +20,9 @@ public class QuestionActivity extends AppCompatActivity {
     private String[] correctPhrases;
     private TextView tView;
     private EditText eText;
-    private Button button;
+    private Button next_button, check_button;
     List<String> phrasesList;
+    int randomIndex;
 
 
     @Override
@@ -30,28 +31,41 @@ public class QuestionActivity extends AppCompatActivity {
         setContentView(R.layout.question_page);
 
         tView = (TextView) findViewById(R.id.question);
-        eText = (EditText) findViewById(R.id.guess);
-        button = (Button) findViewById(R.id.next_button);
+        next_button = (Button) findViewById(R.id.next_button);
+        check_button = (Button) findViewById(R.id.check_guess);
 
         correctPhrases = getResources().getStringArray(R.array.correct_phrases);
         phrasesArray = getResources().getStringArray(R.array.gib_phrases);
         phrasesList = new ArrayList<>(Arrays.asList(phrasesArray));
 
         Random random = new Random();
-        int randomIndex = random.nextInt(phrasesList.size());
-
+        randomIndex = random.nextInt(phrasesList.size());
         newPhrase(randomIndex);
+        checkGuess(randomIndex);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        check_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Random random = new Random();
-                int randomIndex = random.nextInt(phrasesList.size());
+                checkGuess(randomIndex);
+                Snackbar mySnackbar;
+                if(checkGuess(randomIndex)){
+                    mySnackbar = Snackbar.make(v, "Correct!", Snackbar.LENGTH_LONG);
+                } else {
+                    mySnackbar = Snackbar.make(v, "Incorrect!", Snackbar.LENGTH_LONG);
+                }
+                mySnackbar.show();
+            }
+        });
+
+        next_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eText.setText("");
+                randomIndex = random.nextInt(phrasesList.size());
                 newPhrase(randomIndex);
 
             }
         });
-        //setQuestion();
     }
 
     private void newPhrase(int randomIndex) {
@@ -62,21 +76,12 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     private boolean checkGuess(int randomIndex){
+        eText = (EditText) findViewById(R.id.guess);
         String guessInput = eText.getText().toString();
-        return guessInput.equalsIgnoreCase(correctPhrases[randomIndex]);
+        String correctPhrase = correctPhrases[randomIndex];
+        return guessInput.equalsIgnoreCase(correctPhrase);
     }
 
 
-    private void setQuestion(){
-        String [] questions = {"Mis whimms hut", //my swim suit
-                                "elf oh bits up",  //alphabet soup
-                                "fee sha end chaps", //fish and chips
-                                "fish hits span hears", //fidget spinners
-                                "aight bae queue app high", // I bake you a pie
-                                "haystack up hank aches", // a stack of pancakes
-                                "ditch chews haze hum dan", //did you say something
-                                "gift eat hey shawd",//give it a shot}
-        };
-    }
 }
 
