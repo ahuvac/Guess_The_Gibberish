@@ -23,7 +23,6 @@ public class QuestionActivity extends AppCompatActivity {
     private Button next_button, check_button;
     List<String> phrasesList;
     int randomIndex;
-    int score;
 
 
     @Override
@@ -32,6 +31,7 @@ public class QuestionActivity extends AppCompatActivity {
         setContentView(R.layout.question_page);
 
         tView = (TextView) findViewById(R.id.question);
+        eText = (EditText) findViewById(R.id.guess);
         next_button = (Button) findViewById(R.id.next_button);
         check_button = (Button) findViewById(R.id.check_guess);
 
@@ -41,6 +41,7 @@ public class QuestionActivity extends AppCompatActivity {
 
         Random random = new Random();
         randomIndex = random.nextInt(phrasesList.size());
+
         newPhrase(randomIndex);
         checkGuess(randomIndex);
 
@@ -49,18 +50,15 @@ public class QuestionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 checkGuess(randomIndex);
                 Snackbar mySnackbar;
-                String result = "";
                 if(checkGuess(randomIndex)){
-                    ++score;
-                    result = "Correct!";
-
+                    mySnackbar = Snackbar.make(v, "Correct!", Snackbar.LENGTH_LONG);
                 } else {
-                    result = "Incorrect!";
+                    mySnackbar = Snackbar.make(v, "Incorrect!", Snackbar.LENGTH_LONG);
                 }
-                mySnackbar = Snackbar.make(v, result + " \t\tscore: " + score, Snackbar.LENGTH_LONG);
                 mySnackbar.show();
             }
         });
+
         next_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +78,6 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     private boolean checkGuess(int randomIndex){
-        eText = (EditText) findViewById(R.id.guess);
         String guessInput = eText.getText().toString();
         String correctPhrase = correctPhrases[randomIndex];
         return guessInput.equalsIgnoreCase(correctPhrase);
