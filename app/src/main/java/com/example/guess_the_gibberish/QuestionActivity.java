@@ -55,7 +55,7 @@ public class QuestionActivity extends AppCompatActivity {
             correctList = savedInstanceState.getStringArrayList("CORRECT_LIST");
         }
 
-        newPhrase(randomIndex);
+        newGame(random);
 
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +69,7 @@ public class QuestionActivity extends AppCompatActivity {
                     result = "Incorrect!";
                     eText.setText("");
                 }
-                mySnackbar = Snackbar.make(v, result + " \t\tscore: " + score, Snackbar.LENGTH_LONG);
+                mySnackbar = Snackbar.make(v, result + " \t\tScore: " + score, Snackbar.LENGTH_LONG);
                 mySnackbar.show();
             }
         });
@@ -84,7 +84,7 @@ public class QuestionActivity extends AppCompatActivity {
                     public void run() {
                         newGame(random);
                     }
-                }, 3000);
+                }, 2000);
 
             }
         });
