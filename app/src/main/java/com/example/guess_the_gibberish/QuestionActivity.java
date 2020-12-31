@@ -49,7 +49,7 @@ public class QuestionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 checkGuess(randomIndex);
                 Snackbar mySnackbar;
-                String result = "";
+                String result;
                 if(checkGuess(randomIndex)){
                     ++score;
                     result = "Correct!";
