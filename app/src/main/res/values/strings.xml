@@ -4,7 +4,9 @@
     <string name="info_description">Guess the gibberish shown on screen and input your guess</string>
     <string name="info_title">How to Play</string>
     <string name="button_text">Play</string>
-    
+    <string name="submit_button_text">Submit</string>
+    <string name="next_button_text">I Give Up</string>
+
     <string-array name="gib_phrases">
         <item>dew wino hue</item>
         <item>elf oh bits up</item>
@@ -18,14 +20,14 @@
     </string-array>
 
     <string-array name="correct_phrases">
-        <item>Do I know you</item>
-        <item>alphabet soup</item>
-        <item>fish and chips</item>
-        <item>fidget spinners</item>
-        <item>apple of his eye</item>
-        <item>sick and tired of it</item>
-        <item>did you say something</item>
-        <item>give it a shot</item>
-        <item>peace and quiet</item>
+        <item>Do I Know You</item>
+        <item>Alphabet Soup</item>
+        <item>Fish and Chips</item>
+        <item>Fidget Spinners</item>
+        <item>Apple of His Eye</item>
+        <item>Sick and Tired of It</item>
+        <item>Did You Say Something</item>
+        <item>Give It a Shot</item>
+        <item>Peace and Quiet</item>
     </string-array>
 </resources>
