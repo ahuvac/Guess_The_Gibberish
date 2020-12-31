@@ -64,13 +64,19 @@ public class QuestionActivity extends AppCompatActivity {
                 if (checkGuess(randomIndex)) {
                     ++score;
                     result = "Correct!";
-                    newGame(random);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            newGame(random);
+                        }
+                    }, 1500);
+
                 } else {
                     result = "Incorrect!";
                     eText.setText("");
                 }
                 mySnackbar = Snackbar.make(v, result + " \t\tScore: " + score, Snackbar.LENGTH_LONG);
-                mySnackbar.show();
+                mySnackbar.setDuration(1500).show();
             }
         });
 
@@ -78,7 +84,7 @@ public class QuestionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mySnackbar = Snackbar.make(v, "Correct Phrase: " + correctList.get(randomIndex), Snackbar.LENGTH_LONG);
-                mySnackbar.show();
+                mySnackbar.setDuration(2000).show();
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
