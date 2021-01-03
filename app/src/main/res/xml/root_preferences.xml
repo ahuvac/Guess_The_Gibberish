@@ -8,5 +8,4 @@
             app:summaryOn="@string/night_mode_on"
             app:title="@string/night_mode_title" />
     </PreferenceCategory>
-
-</PreferenceScreen>
+    </PreferenceScreen>

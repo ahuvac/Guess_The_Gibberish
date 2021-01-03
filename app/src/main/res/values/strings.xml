@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Guess The Gibberish</string>
     <string name="action_settings">Settings</string>
-    <string name="info_description">Guess the true meaning of the gibberish phrase shown on the screen. If you can\'t figure it out, click "I give up."</string>
+    <string name="info_description">It\'s not what you say, it\'s what you hear!\n\nGuess the true meaning of the gibberish phrase shown on the screen. \nIf you can\'t figure it out, click \"I Give Up.\"</string>
     <string name="info_title">How to Play</string>
     <string name="button_text">Play</string>
     <string name="submit_button_text">Submit</string>

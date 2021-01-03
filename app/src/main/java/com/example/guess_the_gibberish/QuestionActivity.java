@@ -3,13 +3,16 @@ package com.example.guess_the_gibberish;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -39,10 +42,12 @@ public class QuestionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question_page);
         setupViews();
-        setupFAB();
+        //setupFAB();
+        setupActionBar();
         Random random = new Random();
 
         if (savedInstanceState == null) {
@@ -97,6 +102,7 @@ public class QuestionActivity extends AppCompatActivity {
         });
     }
 
+
     private void setupFAB() {
         FloatingActionButton fab = findViewById(R.id.go_home);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +113,23 @@ public class QuestionActivity extends AppCompatActivity {
         });
     }
 
+    private void setupActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
+    
     private void setupViews() {
         tView = (TextView) findViewById(R.id.question);
         eText = (EditText) findViewById(R.id.guess);
@@ -150,6 +173,4 @@ public class QuestionActivity extends AppCompatActivity {
         return guessInput.equalsIgnoreCase(correctPhrase);
     }
 
-
 }
-
