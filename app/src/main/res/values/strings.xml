@@ -1,12 +1,17 @@
 <resources>
     <string name="app_name">Guess The Gibberish</string>
     <string name="action_settings">Settings</string>
-    <string name="info_description">Guess the gibberish shown on screen and input your guess</string>
+    <string name="info_description">Guess the true meaning of the gibberish phrase shown on the screen. If you can\'t figure it out, click "I give up."</string>
     <string name="info_title">How to Play</string>
     <string name="button_text">Play</string>
     <string name="submit_button_text">Submit</string>
     <string name="next_button_text">I Give Up</string>
+    <string name="goodbye">Thanks for playing! You have finished all of the phrases! Come back later for more fun!</string>
+    <string name="go_home">Go Home</string>
+    <string name="game_header">game</string>
+    <string name="display_header">Display</string>
 
+    <!-- Gibberish Phrases-->
     <string-array name="gib_phrases">
         <item>dew wino hue</item>
         <item>elf oh bits up</item>
@@ -19,6 +24,7 @@
         <item>pea sank white</item>
     </string-array>
 
+    <!-- Correct Phrases -->
     <string-array name="correct_phrases">
         <item>Do I Know You</item>
         <item>Alphabet Soup</item>
@@ -30,4 +36,36 @@
         <item>Give It a Shot</item>
         <item>Peace and Quiet</item>
     </string-array>
+
+    <!--Preferences-->
+    <string name="night_mode_key">Night Mode</string>
+    <string name="night_mode_title">Night/Dark Mode</string>
+    <string name="night_mode_off">Never use Night/Dark Mode</string>
+    <string name="night_mode_on">Use Night/Dark Mode (unless disabled in OS Settings)</string>
+
+    <string name="auto_save_key">Auto-Save</string>
+    <string name="auto_save_off">On exit, the game in progress will not be saved</string>
+    <string name="auto_save_on">On exit, the game in progress will be saved</string>
+    <string name="auto_save_title">Auto-Save Game on Exit</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="auto_save">auto save</string>
+    <string name="allow_night_mode">Enable Night Mode</string>
+    <string name="start_game">New Game</string>
+    <string name="about">About</string>
+    <string name="info_about">"This game was created by TB and AC, December 2020. "</string>
 </resources>

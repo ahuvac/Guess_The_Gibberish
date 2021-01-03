@@ -2,9 +2,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.guess_the_gibberish.MainActivity">
+
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:id="@+id/action_about"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="@string/about"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/start_game"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="@string/start_game"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/night_mode"
+        android:checkable="true"
+        android:title="@string/allow_night_mode"
         app:showAsAction="never" />
 </menu>

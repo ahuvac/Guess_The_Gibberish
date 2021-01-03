@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.preference.PreferenceManager;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -19,7 +20,7 @@ import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
 
 
 public class Utils {
-    /*
+
 
     public static void setNightModeOnOffFromPreferenceValue(Context context, String keyNightMode) {
         setNightModeOnOrOff(isNightModePrefOn(context, keyNightMode));
@@ -35,7 +36,7 @@ public class Utils {
         SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         return defaultSharedPreferences.getBoolean(keyNightMode, true);
     }
-    */
+
     /**
      * Shows an Android (nicer) equivalent to JOptionPane
      *

@@ -1,5 +1,6 @@
 package com.example.guess_the_gibberish;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -75,7 +76,7 @@ public class QuestionActivity extends AppCompatActivity {
                     result = "Incorrect!";
                     eText.setText("");
                 }
-                mySnackbar = Snackbar.make(v, result + " \t\tScore: " + score, Snackbar.LENGTH_LONG);
+                mySnackbar = Snackbar.make(v, result + " \t\tScore: " + score, Snackbar.LENGTH_INDEFINITE);
                 mySnackbar.setDuration(1500).show();
             }
         });
@@ -118,8 +119,13 @@ public class QuestionActivity extends AppCompatActivity {
     private void newGame(Random random) {
         eText.setText("");
         removeCurrentEntry();
-        randomIndex = random.nextInt(gibList.size());
-        newPhrase(randomIndex);
+        if (gibList.size() > 0) {
+            randomIndex = random.nextInt(gibList.size());
+            newPhrase(randomIndex);
+        } else {
+            newActivity();
+        }
+
     }
 
     private void removeCurrentEntry() {
@@ -130,6 +136,12 @@ public class QuestionActivity extends AppCompatActivity {
     private void newPhrase(int randomIndex) {
         String randomPhrase = gibList.get(randomIndex);
         tView.setText(randomPhrase);
+
+    }
+
+    private void newActivity() {
+        Intent intent = new Intent(this, EndGameActivity.class);
+        startActivity(intent);
     }
 
     private boolean checkGuess(int randomIndex) {
