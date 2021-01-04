@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?actionBarSize"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?actionBarSize"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <androidx.cardview.widget.CardView
         style="@style/card_view_default"
@@ -26,17 +26,18 @@
             android:text="@string/goodbye"
             android:textSize="40dp" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/go_home"
-            style="@style/default_style"
-            android:layout_margin="@dimen/slim_margin"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:padding="5dp"
-            android:background="@android:color/holo_orange_light"
-            android:text="@string/go_home"
-            />
     </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/go_home"
+        style="@style/default_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/slim_margin"
+        android:layout_gravity="bottom|center_horizontal"
+        android:backgroundTint="@android:color/holo_orange_light"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:padding="5dp"
+        android:text="@string/go_home" />
 
 </LinearLayout>

@@ -1,23 +1,17 @@
 package lib;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Build;
-import android.preference.PreferenceManager;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
-//import androidx.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 
-import com.example.guess_the_gibberish.R;
-
-import static android.app.UiModeManager.MODE_NIGHT_NO;
-import static android.app.UiModeManager.MODE_NIGHT_YES;
-import static android.os.Build.VERSION_CODES.R;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
-
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
 
 public class Utils {
 
@@ -26,7 +20,6 @@ public class Utils {
         setNightModeOnOrOff(isNightModePrefOn(context, keyNightMode));
     }
 
-    @SuppressLint("WrongConstant")
     public static void setNightModeOnOrOff(boolean setToOn) {
         int onMode = (Build.VERSION.SDK_INT < 28) ? MODE_NIGHT_YES : MODE_NIGHT_FOLLOW_SYSTEM;
         AppCompatDelegate.setDefaultNightMode(setToOn ? onMode : MODE_NIGHT_NO);

@@ -1,7 +1,6 @@
 package com.example.guess_the_gibberish;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,17 +10,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class QuestionActivity extends AppCompatActivity {
     private String[] gibArray, correctArray;
@@ -47,13 +45,49 @@ public class QuestionActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question_page);
+        setupActionBar();
         setupViews();
         //setupFAB();
-        setupActionBar();
         Random random = new Random();
 
+        setupListsAndQuestion (savedInstanceState, random);
+        newGame(random);
+
+        setupSubmitButtonListener (random);
+        setupNextButtonListener (random);
+    }
+
+    private void setupActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primaryColor)));
+        }
+    }
+
+    private void setupViews() {
+        tView = (TextView) findViewById(R.id.question);
+        eText = (EditText) findViewById(R.id.guess);
+        next_button = (Button) findViewById(R.id.next_button);
+        submit_button = (Button) findViewById(R.id.submit_button);
+        correctArray = getResources().getStringArray(R.array.correct_phrases);
+        gibArray = getResources().getStringArray(R.array.gib_phrases);
+    }
+
+    private void setupFAB() {
+        FloatingActionButton fab = findViewById(R.id.go_home);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+    }
+
+    private void setupListsAndQuestion (Bundle savedInstanceState, Random random)
+    {
         if (savedInstanceState == null) {
-            gibList = new ArrayList<>(Arrays.asList(gibArray));
+            gibList = new ArrayList<> (Arrays.asList(gibArray));
             correctList = new ArrayList<>(Arrays.asList(correctArray));
             randomIndex = random.nextInt(gibList.size());
         } else {
@@ -62,9 +96,22 @@ public class QuestionActivity extends AppCompatActivity {
             gibList = savedInstanceState.getStringArrayList("GIB_LIST");
             correctList = savedInstanceState.getStringArrayList("CORRECT_LIST");
         }
+    }
 
-        newGame(random);
+    private void newGame(Random random) {
+        eText.setText("");
+        removeCurrentEntry();
+        if (gibList.size() > 0) {
+            randomIndex = random.nextInt(gibList.size());
+            newPhrase(randomIndex);
+        } else {
+            newActivity();
+        }
 
+    }
+
+    private void setupSubmitButtonListener (Random random)
+    {
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +119,7 @@ public class QuestionActivity extends AppCompatActivity {
                 if (checkGuess(randomIndex)) {
                     ++score;
                     result = "Correct!";
-                    new Handler().postDelayed(new Runnable() {
+                    new Handler ().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             newGame(random);
@@ -87,13 +134,16 @@ public class QuestionActivity extends AppCompatActivity {
                 mySnackbar.setDuration(1500).show();
             }
         });
+    }
 
+    private void setupNextButtonListener (Random random)
+    {
         next_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mySnackbar = Snackbar.make(v, "Correct Phrase: " + correctList.get(randomIndex), Snackbar.LENGTH_LONG);
                 mySnackbar.setDuration(2000).show();
-                new Handler().postDelayed(new Runnable() {
+                new Handler ().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         newGame(random);
@@ -102,25 +152,6 @@ public class QuestionActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-
-    private void setupFAB() {
-        FloatingActionButton fab = findViewById(R.id.go_home);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
-    }
-
-    private void setupActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.primaryColor)));
-        }
     }
 
     @Override
@@ -132,27 +163,7 @@ public class QuestionActivity extends AppCompatActivity {
             return super.onOptionsItemSelected(item);
         }
     }
-    
-    private void setupViews() {
-        tView = (TextView) findViewById(R.id.question);
-        eText = (EditText) findViewById(R.id.guess);
-        next_button = (Button) findViewById(R.id.next_button);
-        submit_button = (Button) findViewById(R.id.submit_button);
-        correctArray = getResources().getStringArray(R.array.correct_phrases);
-        gibArray = getResources().getStringArray(R.array.gib_phrases);
-    }
 
-    private void newGame(Random random) {
-        eText.setText("");
-        removeCurrentEntry();
-        if (gibList.size() > 0) {
-            randomIndex = random.nextInt(gibList.size());
-            newPhrase(randomIndex);
-        } else {
-            newActivity();
-        }
-
-    }
 
     private void removeCurrentEntry() {
         correctList.remove(randomIndex);

@@ -3,8 +3,9 @@ package com.example.guess_the_gibberish;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,7 +19,7 @@ public class EndGameActivity extends AppCompatActivity {
     }
 
     private void setUpItems() {
-        Button btn = (Button) findViewById(R.id.go_home);
+        ExtendedFloatingActionButton btn = findViewById(R.id.go_home);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,6 +30,8 @@ public class EndGameActivity extends AppCompatActivity {
     }
     private void goHome(){
         Intent intent = new Intent(this, MainActivity.class);
+        // clear other Activities from the stack
+        intent.addFlags (Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
