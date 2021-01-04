@@ -3,6 +3,7 @@ package com.example.guess_the_gibberish;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,16 +20,17 @@ import static lib.Utils.showInfoDialog;
 
 public class MainActivity extends AppCompatActivity {
     Button button;
-    private boolean mPrefAllowNightMode;
     private String mKEY_NIGHT_MODE;
     private boolean mUseNightMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Utils.setNightModeOnOffFromPreferenceValue(getApplicationContext(), "Night Mode");
-        PreferenceManager.setDefaultValues(this, R.xml.root_preferences, false);
         setContentView(R.layout.activity_main);
+        PreferenceManager.setDefaultValues(this, R.xml.root_preferences, false);
+        mKEY_NIGHT_MODE = getString(R.string.night_mode_key);
+        Utils.setNightModeOnOffFromPreferenceValue(getApplicationContext(), mKEY_NIGHT_MODE);
+        mUseNightMode = Utils.isNightModePrefOn(this, mKEY_NIGHT_MODE);
         setUpButtons();
         setupToolbar();
         setupFAB();
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        menu.findItem(R.id.night_mode).setChecked(mPrefAllowNightMode);
+        menu.findItem(R.id.night_mode).setChecked(mUseNightMode);
         return super.onPrepareOptionsMenu((menu));
     }
 
@@ -77,12 +79,24 @@ public class MainActivity extends AppCompatActivity {
             showAbout();
             return true;
         }
-        if (id == R.id.start_game) {
+        else if (id == R.id.start_game) {
             openNewActivity();
+            return true;
+        }
+        else if (id == R.id.night_mode) {
+            Log.d("Night" , " Night Mode: " + mUseNightMode);
+            handleNightModeClick(item);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void handleNightModeClick(MenuItem item) {
+        item.setChecked(!item.isChecked());
+        mUseNightMode = item.isChecked();
+        Log.d("Night" , " Night Mode: " + mUseNightMode);
+        Utils.setNightModeOnOrOff(mUseNightMode);
     }
 
     private void showAbout() {

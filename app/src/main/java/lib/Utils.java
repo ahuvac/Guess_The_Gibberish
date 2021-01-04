@@ -32,7 +32,7 @@ public class Utils {
         AppCompatDelegate.setDefaultNightMode(setToOn ? onMode : MODE_NIGHT_NO);
     }
 
-    private static boolean isNightModePrefOn(Context context, String keyNightMode) {
+    public static boolean isNightModePrefOn(Context context, String keyNightMode) {
         SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         return defaultSharedPreferences.getBoolean(keyNightMode, true);
     }

@@ -19,7 +19,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.GuessTheGibberish.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.GuessTheGibberish.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
 
-    <style name="Theme.GuessTheGibberish.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.GuessTheGibberish.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 </resources>

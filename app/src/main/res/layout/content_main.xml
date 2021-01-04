@@ -21,7 +21,7 @@
             style="@style/default_style"
             android:layout_gravity="center"
             android:layout_margin="@dimen/slim_margin"
-            android:background="@color/white"
+            android:background="@color/defaultBackgroundColor"
             android:fontFamily="sans-serif-condensed-medium"
             android:gravity="center"
             android:text="@string/app_name"
