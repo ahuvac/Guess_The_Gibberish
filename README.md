@@ -24,7 +24,7 @@ to play the gibberish game.
 
 ## Question Activity
 The question activity displays a phrase in gibberish.
-The user types in the edit text and then presses the submit button
+The user types in the edit text and then presses the submit button.
 If the user is correct, the next phrase appears into the text view, he gains
 a point, and his total score is displayed in the snackbar.
 If the user is incorrect he gets an error message in the snack bar and 
@@ -42,5 +42,5 @@ must try again.
 <img src="/screenshots/landscape.png" width=300 height=150 align=center>
 
 ## More Inofrmation About Our App:
-We utilized state saved and restored to maintain our game with screen rotation
+We utilized state saved and restored to maintain our game with screen rotation.
 We implemented a back arrow on our question activity to take the user back to the main activity
