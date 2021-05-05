@@ -41,6 +41,6 @@ must try again.
 
 <img src="/screenshots/landscape.png" width=300 height=150 align=center>
 
-## More Inofrmation About Our App:
+## More Information About Our App:
 * We utilized state saved and restored to maintain our game with screen rotation.
 * We implemented a back arrow on our question activity to take the user back to the main activity
